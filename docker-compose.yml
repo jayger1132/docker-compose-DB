@@ -1,0 +1,37 @@
+version: '2.1'
+services:
+  # 醫療數據資料庫
+  mariadb:
+    image: 'bitnami/mariadb:10.3'
+    restart: always
+    environment:
+      - MARIADB_ROOT_USER=root
+      - MARIADB_ROOT_PASSWORD=nuuCSIE406
+    # 檢查資料庫是否啟動正常，等待資料庫啟動後才啟動前端網頁或是MQTT寫入
+    volumes:
+      - /mariadb:/var/lib/mysql
+  phpmyadmin:
+    image: 'bitnami/phpmyadmin:4'
+    restart: always 
+    environment:
+      # 反向代理
+      - VIRTUAL_HOST=justtry.406.csie.nuu.edu.tw
+      - VIRTUAL_PORT=443
+      - VIRTUAL_PROTO=https
+      - LETSENCRYPT_HOST=justtry.406.csie.nuu.edu.tw
+      - LETSENCRYPT_EMAIL=jayger1132@gmail.com
+      # 資料庫連線參數
+      - DATABASE_HOST=mariadb
+      - DATABASE_PORT_NUMBER=3306
+    #ports:
+    #  - '10443:443'
+    expose:
+      - '443'
+    depends_on:
+      - mariadb
+    volumes:
+      - 'phpmyadmin_data:/bitnami'
+
+volumes:
+  phpmyadmin_data:
+    driver: local
