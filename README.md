@@ -1,7 +1,7 @@
 # docker-compose-DB
 ### 一開始在安裝 pymysql 時需要先確定有安裝visual studio C v14
-## pymysql 這個就好版本 3.0以上
-# mysql-python  這個在搞 
+## pymysql 這個就好版本 (py3.0以上使用)
+# mysql-python  這個在搞 安裝問題很多
 
 ## Ports: 能連到主機的這些 port 都能夠使用。
 ## expose: 僅能在此 docker-compose 內的 container 們使用。
