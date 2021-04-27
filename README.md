@@ -1,4 +1,8 @@
 # docker-compose-DB
+### 一開始在安裝 pymysql 時需要先確定有安裝visual studio C v14
+## pymysql 這個就好版本 3.0以上
+# mysql-python  這個在搞 
+
 ## Ports: 能連到主機的這些 port 都能夠使用。
 ## expose: 僅能在此 docker-compose 內的 container 們使用。
 ### port phpmyadmin只是管理系統 mariadb才是真正的資料庫
@@ -13,6 +17,29 @@
 volumes:
   # - / 這個斜槓不打 他抓不到 mariadb的service
       - /mariadb:/var/lib/mysql
+```
+## python
+#### 查詢回來的方式 是用矩陣的方式 配置每個name
+```py
+sql = "SELECT * FROM account WHERE account = '%s'" % (account)
+try:
+    #cursor.execute執行 sql動作
+    cursor.execute(sql)
+    results = cursor.fetchone()
+    print (results[1])
+    #db.commit 提交到DB執行
+    db.commit()
+except:
+       db.rollback()
+```
+#### 要輸入變數 INSERT必須為雙引號 
+```py
+sql = "INSERT INTO account(account,password) VALUES ('%s' , '%s')" %(account, password)
+```
+#### 記錄目前時間       
+```
+localtime = time.localtime()
+localtime=time.strftime("%Y-%m-%d %I:%M:%S", localtime)
 ```
 ## 參考資料
 #### docker-compose.yml的详细解释与说明
