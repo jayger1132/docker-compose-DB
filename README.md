@@ -7,6 +7,7 @@
     ports:
       - "33060:3306"
 ```
+
 ### volumes 容器:本機目標地
 ```yml
 volumes:
@@ -20,3 +21,5 @@ https://blog.csdn.net/yb546822612/article/details/105276164
 https://docs.docker.com/compose/compose-file/compose-file-v2/
 #### port 介紹
 https://myctw.github.io/post/df5.html
+
+## 可以不用 撰寫port的方式 讓他自動設定 port PMA_HOST depend(資料在 nextcloud 跟 smarthome資料庫)待完成....
