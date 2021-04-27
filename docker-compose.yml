@@ -10,6 +10,8 @@ services:
     # 檢查資料庫是否啟動正常，等待資料庫啟動後才啟動前端網頁或是MQTT寫入
     volumes:
       - /mariadb:/var/lib/mysql
+    ports:
+      - "33060:3306"
   phpmyadmin:
     image: 'bitnami/phpmyadmin:4'
     restart: always 

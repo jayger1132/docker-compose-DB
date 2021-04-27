@@ -1,9 +1,9 @@
 import pymysql
-dbhost='https://justtry.406.csie.nuu.edu.tw'
+dbhost='justtry.406.csie.nuu.edu.tw'
 dbuser='root'
-dbport=3306
+dbport=33060
 dbpass='nuuCSIE406'
-dbname='phpmyadmin'
+dbname='test'
 
 try:
     db=pymysql.connect(host=dbhost,user=dbuser,port=dbport,password=dbpass,database=dbname)

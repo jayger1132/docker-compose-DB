@@ -1,4 +1,12 @@
 # docker-compose-DB
+## Ports: 能連到主機的這些 port 都能夠使用。
+## expose: 僅能在此 docker-compose 內的 container 們使用。
+### port phpmyadmin只是管理系統 mariadb才是真正的資料庫
+```yml
+# 主機 port:docker port 好處是讓對外的主機不會直接連到原始port
+    ports:
+      - "33060:3306"
+```
 ### volumes 容器:本機目標地
 ```yml
 volumes:
