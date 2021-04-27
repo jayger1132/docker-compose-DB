@@ -76,6 +76,9 @@ elif (log == "log up"):
             password2 = input("double check password \n")
             if password == password2:
                 break
+            else:
+                print("they are different please enter password again")
+                continue
         else:
             password = input("please enter correct password \n")
     
