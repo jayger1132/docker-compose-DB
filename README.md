@@ -36,10 +36,38 @@ except:
 ```py
 sql = "INSERT INTO account(account,password) VALUES ('%s' , '%s')" %(account, password)
 ```
-#### 記錄目前時間       
+#### update的寫法
+```py
+sql = "UPDATE account SET date = '%s' , multiple = 1  WHERE account = '%s'" % (localtime,account)
+try:
+    cursor.execute(sql)
+    db.commit()
+except:
+    db.rollback()
 ```
-localtime = time.localtime()
-localtime=time.strftime("%Y-%m-%d %I:%M:%S", localtime)
+
+#### py時間的寫法
+```py
+#time.time() 轉換出來是秒的形式
+#localtime 是 struct型態 strftime是轉成字串型態
+localtime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+```
+#### 時間的比較方式
+```py
+from datetime import datetime, timedelta
+#現在時間
+current_date = datetime.now()
+#更新密碼後超過 30秒就要重新設定密碼
+overtime = results[0]+timedelta(minutes=30)
+if current_date > overtime:
+    print("your password is too old to keep safely please renew your password")
+```
+#### hash一個以md5為加密方法的加密
+```py
+#轉成密文
+password = hb.md5(password.encode("utf-8"))
+#輸出密文的值 如果沒有轉換他會單純顯示md5方法
+password = password.hexdigest()
 ```
 ## 參考資料
 #### docker-compose.yml的详细解释与说明
@@ -48,5 +76,9 @@ https://blog.csdn.net/yb546822612/article/details/105276164
 https://docs.docker.com/compose/compose-file/compose-file-v2/
 #### port 介紹
 https://myctw.github.io/post/df5.html
+#### 時間比較
+https://www.delftstack.com/zh-tw/howto/python/python-compare-dates/
+#### hash的各種方法
+https://www.cnblogs.com/cwp-bg/p/10256640.html
 
 ## 可以不用 撰寫port的方式 讓他自動設定 port PMA_HOST depend(資料在 nextcloud 跟 smarthome資料庫)待完成....

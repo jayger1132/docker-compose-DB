@@ -23,22 +23,6 @@ except pymysql.Error as e:
 
 log = input ('please enter log in or log up \n')
 
-"""account ="jayger789"
-sql = "SELECT register FROM account WHERE account = '%s'" % (account)
-try:
-    cursor.execute(sql)
-    results = cursor.fetchone()
-except:
-    db.rollback()
-print(results[0])
-
-current_date = datetime.now()
-previous_date = results[0] - timedelta(days=1)
-if current_date > previous_date:
-    print("your password is too old to keep safely please renew your password")
-    
-"""
-
 # 要輸入變數 INSERT必須為雙引號 
 #sql = "INSERT INTO account(account,password) VALUES ('%s' , '%s')" %(account, password)
 
