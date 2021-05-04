@@ -12,7 +12,7 @@
       - "33060:3306"
 ```
 
-### volumes 容器:本機目標地
+### volumes 本機目標地:容器
 ```yml
 volumes:
   # - / 這個斜槓不打 他抓不到 mariadb的service
