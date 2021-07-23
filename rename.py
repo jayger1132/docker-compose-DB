@@ -1,5 +1,5 @@
 import os
-path='D:\Gitinit\docker-compose-DB/test_image1' #這就是欲進行檔名更改的檔案路徑，路徑的斜線是為/，要留意下！
+path='D:/Gitinit/py-recognize/project_summer/data/imgs/from_video/Biceps_curl\bending' #這就是欲進行檔名更改的檔案路徑，路徑的斜線是為/，要留意下！
 files=os.listdir(path)
 print(files) #印出讀取到的檔名稱，用來確認自己是不是真的有讀到
 
@@ -9,47 +9,37 @@ o=0
 p=0
 n=0
 
-#更改最外圍資料夾檔名
-for i in files: #因為資料夾裡面的檔案都要重新更換名稱
-    oldname=path+"/"+files[n] #指出檔案現在的路徑名稱，[n]表示第n個檔案
-    print (path,'\t',files[n])
+##更改最外圍資料夾檔名
+#for i in files: #因為資料夾裡面的檔案都要重新更換名稱
+#    oldname=path+"/"+files[n] #指出檔案現在的路徑名稱，[n]表示第n個檔案
+#    print (path,'\t',files[n])
     
     
-    if(files[n]):
-        newname = path + '/test_' + str(o)
-        os.rename(oldname,newname)
-        o = o+1
-        print ('newname \t',newname)
-    #更改裡面圖片
+#    if(files[n]):
+#        newname = path + '/test_' + str(o)
+#        os.rename(oldname,newname)
+#        o = o+1
+#        print ('newname \t',newname)
+#    #更改裡面圖片
 
-    path1 = newname
-    file1 = os.listdir(path1)
-    print (path1,"\t",file1)
-    for i in file1 :
-        path2 = path1 +"\\"+i
-        file2 = os.listdir(path2)
-        print("lower \t" ,file2)
-        inner=10 #更改內層檔案的檔案名稱
-        p=0
-        for i in file2:
-            oldname = path2+'/'+file2[p]
-            print (oldname)
-            newname = path2+'/'+str(inner)+".bmp"
-            print(newname)
-            os.renames(oldname, newname)
-            inner+=1
-            p+=1
-    
-    
-    n=n+1
-
-
-
-            
-
-
-
-
+#    path1 = newname
+#    file1 = os.listdir(path1)
+#    print (path1,"\t",file1)
+#    for i in file1 :
+#        path2 = path1 +"\\"+i
+#        file2 = os.listdir(path2)
+#        print("lower \t" ,file2)
+#        inner=10 #更改內層檔案的檔案名稱
+#        p=0
+#        for i in file2:
+#            oldname = path2+'/'+file2[p]
+#            print (oldname)
+#            newname = path2+'/'+str(inner)+".bmp"
+#            print(newname)
+#            os.renames(oldname, newname)
+#            inner+=1
+#            p+=1
+#    n=n+1
 
 
 '''
